@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.Model", "RailwayStation.Model\RailwayStation.Model.csproj", "{6E035742-D539-4F5B-9FDA-7E413D64E0BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{EF16AED5-8265-4AD3-9281-689F636022EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{9A27453A-7ACA-415E-8DBB-F6FF709EB485}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{388810C0-5B32-48BC-94D8-F9E69B2D7FFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.Core", "RailwayStation.Core\RailwayStation.Core.csproj", "{9427D7CC-FE4E-4E64-9D7B-30A19AFD26E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E035742-D539-4F5B-9FDA-7E413D64E0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E035742-D539-4F5B-9FDA-7E413D64E0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E035742-D539-4F5B-9FDA-7E413D64E0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E035742-D539-4F5B-9FDA-7E413D64E0BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9427D7CC-FE4E-4E64-9D7B-30A19AFD26E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9427D7CC-FE4E-4E64-9D7B-30A19AFD26E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9427D7CC-FE4E-4E64-9D7B-30A19AFD26E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9427D7CC-FE4E-4E64-9D7B-30A19AFD26E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E035742-D539-4F5B-9FDA-7E413D64E0BC} = {388810C0-5B32-48BC-94D8-F9E69B2D7FFB}
+		{9A27453A-7ACA-415E-8DBB-F6FF709EB485} = {EF16AED5-8265-4AD3-9281-689F636022EA}
+		{388810C0-5B32-48BC-94D8-F9E69B2D7FFB} = {EF16AED5-8265-4AD3-9281-689F636022EA}
+		{9427D7CC-FE4E-4E64-9D7B-30A19AFD26E2} = {388810C0-5B32-48BC-94D8-F9E69B2D7FFB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94DA131D-D27E-4952-88FE-E340ED7453A3}
+	EndGlobalSection
+EndGlobal
