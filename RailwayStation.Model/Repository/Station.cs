@@ -11,9 +11,12 @@ namespace RailwayStation.Model
 
         public List<Point> Points { get; private set; }
         public List<Section> Sections { get; private set; }
+        public List<Way> Ways { get; private set; }
+        public List<Park> Parks { get; private set; }
 
         private Station()
         {
+            #region points
             var point1 = new Point(1, "Point 1");
             var point2 = new Point(2, "Point 2");
             var point3 = new Point(3, "Point 3");
@@ -37,9 +40,10 @@ namespace RailwayStation.Model
                 point1, point2, point3, point4,
                 point5, point6, point7, point8,
                 point9, point10, point11, point12,
-                point13, point14, point15, point16
+                point13, point14, point15, point16,
             };
-
+            #endregion
+            #region sections
             var section1 = new Section(1, "Section 1", point1, point2, 10f);
             var section2 = new Section(2, "Section 2", point2, point4, 2f);
             var section3 = new Section(3, "Section 3", point3, point4, 10f);
@@ -59,8 +63,35 @@ namespace RailwayStation.Model
                 section1, section2, section3, section4,
                 section5, section6, section7, section8, 
                 section9, section10, section11, section12, 
-                section13
+                section13,
             };
+            #endregion
+            #region ways
+            var way1 = new Way(1, "Way 1", new List<Section> { section1, section2, });
+            var way2 = new Way(2, "Way 2", new List<Section> { section3, section4, });
+            var way3 = new Way(3, "Way 3", new List<Section> { section5, section6, });
+            var way4 = new Way(4, "Way 4", new List<Section> { section7, section8, });
+            var way5 = new Way(5, "Way 5", new List<Section> { section9, });
+            var way6 = new Way(6, "Way 6", new List<Section> { section10, });
+            var way7 = new Way(7, "Way 7", new List<Section> { section11, section12, section13, });
+
+            Ways = new List<Way> 
+            { 
+                way1, way2, way3, way4, 
+                way5, way6, way7, 
+            };
+            #endregion
+            #region parks
+            var park1 = new Park(1, "Park 1", new List<Way> { way1, way2, });
+            var park2 = new Park(2, "Park 2", new List<Way> { way3, way4, });
+            var park3 = new Park(3, "Park 3", new List<Way> { way5, way6, });
+            var park4 = new Park(4, "Park 4", new List<Way> { way7, });
+
+            Parks = new List<Park> 
+            { 
+                park1, park2, park3, park4,
+            };
+            #endregion
         }
     }
 }
