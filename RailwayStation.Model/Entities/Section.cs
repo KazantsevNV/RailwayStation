@@ -6,7 +6,7 @@
         public Point SecondPoint { get; private set; }
         public float Length { get; private set; }
 
-        public Section(Point fisrtPoint, Point secondPoint, float length)
+        public Section(int id, string description, Point fisrtPoint, Point secondPoint, float length) : base(id, description)
         {
             FisrtPoint = fisrtPoint;
             SecondPoint = secondPoint;
