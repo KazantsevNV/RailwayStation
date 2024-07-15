@@ -8,8 +8,7 @@ namespace RailwayStation.PathFinder.Tests
     public class ShortestPathFinderTests
     {
         [TestMethod]
-        public void GetFindShortestPath_returtSection2Section4Section6()
-        {
+        public void GetFindShortestPath_returtSection2Section4Section6() {
             //arrange
             var point1 = new Point(1, "Point 1");
             var point2 = new Point(2, "Point 2");

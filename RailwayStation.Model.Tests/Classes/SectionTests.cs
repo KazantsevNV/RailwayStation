@@ -7,14 +7,13 @@ namespace RailwayStation.Model.Tests
     public class SectionTests
     {
         [TestMethod]
-        public void ContainsPoint_Point1_returnTrue()
-        {
+        public void ContainsPoint_Point1_returnTrue() {
             //arrange
             var point1 = new Point(1, "Point 1");
             var point2 = new Point(2, "Point 2");
 
             //act
-            var section = new Section(1, "Section 1", point1, point2 );
+            var section = new Section(1, "Section 1", point1, point2);
             bool actual = section.ContainsPoint(point1);
 
             //assert
@@ -22,8 +21,7 @@ namespace RailwayStation.Model.Tests
         }
 
         [TestMethod]
-        public void ContainsPoint_Point3_returnFalse()
-        {
+        public void ContainsPoint_Point3_returnFalse() {
             //arrange
             var point1 = new Point(1, "Point 1");
             var point2 = new Point(2, "Point 2");
@@ -38,8 +36,7 @@ namespace RailwayStation.Model.Tests
         }
 
         [TestMethod]
-        public void GetNeighbors_Section3_returnSection2AndSection4()
-        {
+        public void GetNeighbors_Section3_returnSection2AndSection4() {
             //arrange
             var point1 = new Point(1, "Point 1");
             var point2 = new Point(2, "Point 2");

@@ -18,36 +18,29 @@ namespace RailwayStation.PathFinder
         private readonly IPathFinder pathFinder;
         private readonly IStation station;
 
-        public PathFinderPresenter() 
-        {
+        public PathFinderPresenter() {
             pathFinder = PathFinderDIContainer.Instance.Get<IPathFinder>();
             station = PathFinderDIContainer.Instance.Get<IStation>();
         }
 
-        public void OutputAllSections() 
-        {
+        public void OutputAllSections() {
             station.Sections.ForEach(section => Console.WriteLine($"{section.Id}   {section.Description}"));
         }
 
-        public void StartInput() 
-        {
-            while (true)
-            {
+        public void StartInput() {
+            while (true) {
                 var startSection = GetSection(START_POINT_MESSAGE);
                 var endSection = GetSection(END_POINT_MESSAGE, startSection);
 
                 List<Section> shortestPath = pathFinder.GetFindShortestPath(startSection, endSection);
 
-                if (shortestPath == null)
-                {
+                if (shortestPath == null) {
                     Console.WriteLine(string.Format(PATH_NOT_FOUND_MESSAGE, startSection, endSection));
                 }
-                else
-                {
+                else {
 
                     Console.WriteLine(string.Format(SHORTEST_PATH_MESSAGE, startSection, endSection));
-                    foreach (var point in shortestPath)
-                    {
+                    foreach (var point in shortestPath) {
                         Console.WriteLine(point);
                     }
                 }
@@ -55,23 +48,19 @@ namespace RailwayStation.PathFinder
             }
         }
 
-        private Section GetSection(string message, Section startSection = null)
-        {
+        private Section GetSection(string message, Section startSection = null) {
             int sectionId = GetSectionID(message);
 
             Section section;
-            try
-            {
+            try {
                 section = station.Sections.First(s => s.Id == sectionId);
             }
-            catch (InvalidOperationException)
-            {
+            catch (InvalidOperationException) {
                 Console.WriteLine(string.Format(INVALID_OPERATION_EXCEPTION_MESSAGE, sectionId));
                 section = GetSection(message);
             }
 
-            if (startSection != null && section.Equals(startSection)) 
-            {
+            if (startSection != null && section.Equals(startSection)) {
                 Console.WriteLine(DIFFERENTIATE_MESSAGE);
                 section = GetSection(message, startSection);
             }
@@ -79,16 +68,13 @@ namespace RailwayStation.PathFinder
             return section;
         }
 
-        private int GetSectionID(string message)
-        {
+        private int GetSectionID(string message) {
             Console.Write(message);
             int pointId;
-            try
-            {
+            try {
                 pointId = Convert.ToInt32(Console.ReadLine());
             }
-            catch (FormatException)
-            {
+            catch (FormatException) {
                 Console.WriteLine(FORMAT_EXCEPTION_MESSAGE);
                 pointId = GetSectionID(message);
             }

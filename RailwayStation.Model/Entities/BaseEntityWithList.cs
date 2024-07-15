@@ -8,8 +8,7 @@ namespace RailwayStation.Model
 
         public IReadOnlyList<T> Entityes => entityes;
 
-        public BaseEntityWithList(int id, string description, List<T> entityes) : base(id, description)
-        {
+        public BaseEntityWithList(int id, string description, List<T> entityes) : base(id, description) {
             this.entityes = entityes;
         }
 
@@ -17,8 +16,7 @@ namespace RailwayStation.Model
             entityes.Add(entity);
         }
 
-        public void RemoveSection(T entity)
-        {
+        public void RemoveSection(T entity) {
             if (!entityes.Contains(entity)) {
                 return;
             }

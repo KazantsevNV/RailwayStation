@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace RailwayStation.Model
 {
@@ -9,8 +9,7 @@ namespace RailwayStation.Model
         public List<Way> Ways { get; private set; }
         public List<Park> Parks { get; private set; }
 
-        public Station()
-        {
+        public Station() {
             #region points
             var point1 = new Point(1, "Point 1");
             var point2 = new Point(2, "Point 2");
@@ -56,8 +55,8 @@ namespace RailwayStation.Model
             Sections = new List<Section>
             {
                 section1, section2, section3, section4,
-                section5, section6, section7, section8, 
-                section9, section10, section11, section12, 
+                section5, section6, section7, section8,
+                section9, section10, section11, section12,
                 section13,
             };
             #endregion
@@ -70,10 +69,10 @@ namespace RailwayStation.Model
             var way6 = new Way(6, "Way 6", new List<Section> { section10, });
             var way7 = new Way(7, "Way 7", new List<Section> { section11, section12, section13, });
 
-            Ways = new List<Way> 
-            { 
-                way1, way2, way3, way4, 
-                way5, way6, way7, 
+            Ways = new List<Way>
+            {
+                way1, way2, way3, way4,
+                way5, way6, way7,
             };
             #endregion
             #region parks
@@ -82,8 +81,8 @@ namespace RailwayStation.Model
             var park3 = new Park(3, "Park 3", new List<Way> { way5, way6, });
             var park4 = new Park(4, "Park 4", new List<Way> { way7, });
 
-            Parks = new List<Park> 
-            { 
+            Parks = new List<Park>
+            {
                 park1, park2, park3, park4,
             };
             #endregion

@@ -2,23 +2,19 @@ using Ninject;
 
 namespace RailwayStation.Model
 {
-    public class ModelDIContainer 
+    public class ModelDIContainer
     {
         private static readonly object LockObj = new();
         private static ModelDIContainer instance;
         private readonly IKernel kernel;
 
-        private ModelDIContainer()
-        {
+        private ModelDIContainer() {
             kernel = new StandardKernel(new ModelModule());
         }
 
-        public static ModelDIContainer Instance
-        {
-            get
-            {
-                lock (LockObj)
-                {
+        public static ModelDIContainer Instance {
+            get {
+                lock (LockObj) {
                     instance ??= new ModelDIContainer();
                     return instance;
                 }
