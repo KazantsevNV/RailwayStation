@@ -1,5 +1,4 @@
-﻿using RailwayStation.DI;
-using RailwayStation.Model;
+﻿using RailwayStation.Model;
 using System;
 using System.Linq;
 
@@ -49,7 +48,7 @@ namespace RailwayStation.PathFinder
             Point point;
             try
             {
-                point = DIContainer.Instance.Get<IStation>().Points.First(p => p.Id == pointId);
+                point = ModelDIContainer.Instance.Get<IStation>().Points.First(p => p.Id == pointId);
             }
             catch (InvalidOperationException)
             {

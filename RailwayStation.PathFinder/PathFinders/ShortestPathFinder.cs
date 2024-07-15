@@ -1,5 +1,4 @@
-﻿using RailwayStation.DI;
-using RailwayStation.Model;
+﻿using RailwayStation.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,7 +10,7 @@ namespace RailwayStation.PathFinder
 
         public ShortestPathFinder()
         {
-            var station = DIContainer.Instance.Get<IStation>();
+            var station = ModelDIContainer.Instance.Get<IStation>();
             _sections = station.Sections;
         }
 

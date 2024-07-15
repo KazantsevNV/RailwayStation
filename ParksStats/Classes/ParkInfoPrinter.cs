@@ -1,5 +1,4 @@
-﻿using RailwayStation.DI;
-using RailwayStation.Model;
+﻿using RailwayStation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace ParksStats
 
         public ParkInfoPrinter() 
         {
-            _station = DIContainer.Instance.Get<IStation>();
+            _station = ModelDIContainer.Instance.Get<IStation>();
         }
 
         public void PrintParksInfo()

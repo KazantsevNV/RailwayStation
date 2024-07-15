@@ -8,4 +8,8 @@
     <ProjectReference Include="..\RailwayStation.Core\RailwayStation.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Ninject" Version="3.3.6" />
+  </ItemGroup>
+
 </Project>
