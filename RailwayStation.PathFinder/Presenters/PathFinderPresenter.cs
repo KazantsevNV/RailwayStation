@@ -13,6 +13,7 @@ namespace RailwayStation.PathFinder
         private const string SHORTEST_PATH_MESSAGE = "Кратчайший путь от {0} до {1}: ";
         private const string FORMAT_EXCEPTION_MESSAGE = "ID участка должен быть целым числом";
         private const string INVALID_OPERATION_EXCEPTION_MESSAGE = "Участка с ID = {0} не существует";
+        private const string DIFFERENTIATE_MESSAGE = "Стартовый и финишный участки должны различаться";
 
         private readonly IPathFinder _pathFinder;
         private readonly IStation _station;
@@ -36,11 +37,11 @@ namespace RailwayStation.PathFinder
             while (true)
             {
                 var startSection = GetSection(START_POINT_MESSAGE);
-                var endSection = GetSection(END_POINT_MESSAGE);
+                var endSection = GetSection(END_POINT_MESSAGE, startSection);
 
                 List<Section> shortestPath = _pathFinder.GetFindShortestPath(startSection, endSection);
 
-                if (shortestPath.IsNullOrEmpty())
+                if (shortestPath == null)
                 {
                     Console.WriteLine(string.Format(PATH_NOT_FOUND_MESSAGE, startSection, endSection));
                 }
@@ -57,7 +58,7 @@ namespace RailwayStation.PathFinder
             }
         }
 
-        private Section GetSection(string message)
+        private Section GetSection(string message, Section startSection = null)
         {
             int sectionId = GetSectionID(message);
 
@@ -70,6 +71,12 @@ namespace RailwayStation.PathFinder
             {
                 Console.WriteLine(string.Format(INVALID_OPERATION_EXCEPTION_MESSAGE, sectionId));
                 section = GetSection(message);
+            }
+
+            if (startSection != null && section.Equals(startSection)) 
+            {
+                Console.WriteLine(DIFFERENTIATE_MESSAGE);
+                section = GetSection(message, startSection);
             }
 
             return section;

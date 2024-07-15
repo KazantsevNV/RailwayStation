@@ -30,9 +30,8 @@ namespace RailwayStation.PathFinder
                 path.Add(section);
                 section = previousPoints[section];
             }
-            path.Add(section);
-
             path.Reverse();
+            path.Remove(endSection);
 
             return path;
         }
