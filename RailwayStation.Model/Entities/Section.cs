@@ -2,13 +2,18 @@
 {
     public class Section : BaseEntity
     {
-        public Point FisrtPoint { get; private set; }
+        public Point FirstPoint { get; private set; }
         public Point SecondPoint { get; private set; }
 
-        public Section(int id, string description, Point fisrtPoint, Point secondPoint) : base(id, description)
+        public Section(int id, string description, Point firstPoint, Point secondPoint) : base(id, description)
         {
-            FisrtPoint = fisrtPoint;
+            FirstPoint = firstPoint;
             SecondPoint = secondPoint;
+        }
+
+        public bool ContainsPoint(Point point)
+        {
+            return FirstPoint.Equals(point) || SecondPoint.Equals(point);
         }
     }
 }

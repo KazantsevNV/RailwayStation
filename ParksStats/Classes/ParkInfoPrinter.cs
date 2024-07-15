@@ -30,7 +30,7 @@ namespace ParksStats
         private List<Point> GetAllPointsInPark(Park park) 
         {
             return park.Entityes.SelectMany(way => way.Entityes)
-                                          .SelectMany(section => new List<Point> { section.FisrtPoint, section.SecondPoint })
+                                          .SelectMany(section => new List<Point> { section.FirstPoint, section.SecondPoint })
                                           .Distinct()
                                           .ToList();
         }

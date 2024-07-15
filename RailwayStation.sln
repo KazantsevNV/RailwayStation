@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RailwayStation.ParksStats",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.DI", "RailwayStation.DI\RailwayStation.DI.csproj", "{7660DC9C-D3C6-4D61-849A-612B28255D8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.PathFinder", "RailwayStation.PathFinder\RailwayStation.PathFinder.csproj", "{CC757124-C56E-4F09-9B5E-4776EACF30DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7660DC9C-D3C6-4D61-849A-612B28255D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7660DC9C-D3C6-4D61-849A-612B28255D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7660DC9C-D3C6-4D61-849A-612B28255D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC757124-C56E-4F09-9B5E-4776EACF30DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC757124-C56E-4F09-9B5E-4776EACF30DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC757124-C56E-4F09-9B5E-4776EACF30DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC757124-C56E-4F09-9B5E-4776EACF30DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{9427D7CC-FE4E-4E64-9D7B-30A19AFD26E2} = {388810C0-5B32-48BC-94D8-F9E69B2D7FFB}
 		{0713D95A-2298-4958-B138-142679B29F8F} = {9A27453A-7ACA-415E-8DBB-F6FF709EB485}
 		{7660DC9C-D3C6-4D61-849A-612B28255D8D} = {388810C0-5B32-48BC-94D8-F9E69B2D7FFB}
+		{CC757124-C56E-4F09-9B5E-4776EACF30DE} = {9A27453A-7ACA-415E-8DBB-F6FF709EB485}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94DA131D-D27E-4952-88FE-E340ED7453A3}
