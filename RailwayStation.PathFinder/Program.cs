@@ -10,27 +10,62 @@ namespace RailwayStation.PathFinder
         static void Main(string[] args)
         {
             var pathFinder = new DijkstraPathFinder();
-
-            var station = DIContainer.Instance.Get<IStation>();
-            var points = station.Points;
-
-            var startPoint = station.Points.First(p => p.Id == 1);
-            var endPoint = station.Points.First(p => p.Id == 12);
-
-            var shortestPath = pathFinder.GetFindShortestPath(startPoint, endPoint);
-
-            if (shortestPath.Any())
+            while (true)
             {
-                Console.WriteLine("Shortest path from A to D:");
-                foreach (var point in shortestPath)
+                var startPoint = GetPoint("Введите ID начальной точки пути :");
+                var endPoint = GetPoint("Введите ID конечной точки пути :");
+
+                var shortestPath = pathFinder.GetFindShortestPath(startPoint, endPoint);
+
+                if (shortestPath.IsNullOrEmpty())
                 {
-                    Console.WriteLine(point.Description);
+                    Console.WriteLine($"Пути от {startPoint} до {endPoint} не существует");
                 }
+                else
+                {
+
+                    Console.WriteLine($"Кратчайший путь от {startPoint} до {endPoint}: ");
+                    foreach (var point in shortestPath)
+                    {
+                        Console.WriteLine(point);
+                    }
+                }
+                Console.WriteLine("");
             }
-            else
+        }
+
+        private static Point GetPoint(string message) 
+        {
+            int pointId = GetPointID(message);
+
+            Point point;
+            try
             {
-                Console.WriteLine("No path found from A to D.");
+                point = DIContainer.Instance.Get<IStation>().Points.First(p => p.Id == pointId);
             }
+            catch (InvalidOperationException) 
+            {
+                Console.WriteLine($"Точки с ID = {pointId} не существует");
+                point = GetPoint(message);
+            }
+
+            return point;
+        }
+
+        private static int GetPointID(string message) 
+        {
+            Console.Write(message);
+            int pointId;
+            try
+            {
+                pointId = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"ID точки должен быть целым числом");
+                pointId = GetPointID(message);
+            }
+            return pointId;
         }
     }
 }

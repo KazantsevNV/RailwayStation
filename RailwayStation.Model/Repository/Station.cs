@@ -52,14 +52,13 @@ namespace RailwayStation.Model
             var section11 = new Section(11, "Section 11", point9, point10);
             var section12 = new Section(12, "Section 12", point10, point12);
             var section13 = new Section(13, "Section 13", point11, point12);
-            var section14 = new Section(14, "Section 14", point1, point7);
 
             Sections = new List<Section>
             {
                 section1, section2, section3, section4,
                 section5, section6, section7, section8, 
                 section9, section10, section11, section12, 
-                section13, section14, 
+                section13,
             };
             #endregion
             #region ways
