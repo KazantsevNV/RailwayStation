@@ -1,6 +1,5 @@
 ﻿using RailwayStation.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace RailwayStation.PathFinder
@@ -14,16 +13,24 @@ namespace RailwayStation.PathFinder
         private const string FORMAT_EXCEPTION_MESSAGE = "ID точки должен быть целым числом";
         private const string INVALID_OPERATION_EXCEPTION_MESSAGE = "Точки с ID = {0} не существует";
 
-        private IPathFinder _pathFinder;
-        private List<Point> _points;
+        private readonly IPathFinder _pathFinder;
+        private readonly IStation _station;
 
         public PathFinderPresenter() 
         {
             _pathFinder = PathFinderDIContainer.Instance.Get<IPathFinder>();
-            _points = PathFinderDIContainer.Instance.Get<IStation>().Points;
+            _station = PathFinderDIContainer.Instance.Get<IStation>();
         }
 
-        public void Start() 
+        public void OutputAllSections() 
+        {
+            _station.Sections.ForEach(section =>
+            {
+                Console.WriteLine($"{section.Id}   {section.Description}");
+            });
+        }
+
+        public void StartInput() 
         {
             while (true)
             {
@@ -56,7 +63,7 @@ namespace RailwayStation.PathFinder
             Point point;
             try
             {
-                point = _points.First(p => p.Id == pointId);
+                point = _station.Points.First(p => p.Id == pointId);
             }
             catch (InvalidOperationException)
             {

@@ -5,7 +5,9 @@
         private static PathFinderPresenter _presenter = new PathFinderPresenter();
         static void Main(string[] args)
         {
-            _presenter.Start();
+            _presenter.OutputAllSections();
+
+            _presenter.StartInput();
         }
     }
 }
