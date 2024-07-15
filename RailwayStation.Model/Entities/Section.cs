@@ -1,4 +1,6 @@
-﻿namespace RailwayStation.Model
+﻿using System.Collections.Generic;
+
+namespace RailwayStation.Model
 {
     public class Section : BaseEntity
     {
@@ -14,6 +16,17 @@
         public bool ContainsPoint(Point point)
         {
             return FirstPoint.Equals(point) || SecondPoint.Equals(point);
+        }
+
+        public List<Section> GetNeighbors(List<Section> allSections) 
+        {
+            var neighbors = new List<Section>();
+            allSections.ForEach(section =>
+            {
+                if(section.ContainsPoint(FirstPoint) || section.ContainsPoint(SecondPoint))
+                    neighbors.Add(section);
+            });
+            return neighbors;
         }
     }
 }

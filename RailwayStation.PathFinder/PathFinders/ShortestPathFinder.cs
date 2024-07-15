@@ -6,55 +6,52 @@ namespace RailwayStation.PathFinder
 {
     public class ShortestPathFinder : IPathFinder
     {
+        private readonly IStation _station;
         private readonly List<Section> _sections;
-
-        public ShortestPathFinder()
+        public ShortestPathFinder() 
         {
-            var station = PathFinderDIContainer.Instance.Get<IStation>();
-            _sections = station.Sections;
+            _station = PathFinderDIContainer.Instance.Get<IStation>();
+            _sections = _station.Sections;
         }
 
-        public List<Point> GetFindShortestPath(Point startPoint, Point endPoint)
+        public List<Section> GetFindShortestPath(Section startSection, Section endSection)
         {
-            var previousPoints = FindShortestPath(startPoint, endPoint);
+            var previousPoints = FindShortestPath(startSection, endSection);
 
-            var path = new List<Point>();
-            var point = endPoint;
+            var path = new List<Section>();
+            var section = endSection;
 
-            if (!previousPoints.ContainsKey(endPoint))
-                return path;
+            if (!previousPoints.ContainsKey(endSection))
+                return null;
 
 
-            while (point != null && previousPoints.ContainsKey(point))
+            while (section != null && previousPoints.ContainsKey(section))
             {
-                path.Add(point);
-                point = previousPoints[point];
+                path.Add(section);
+                section = previousPoints[section];
             }
-            path.Add(point);
+            path.Add(section);
 
             path.Reverse();
 
             return path;
         }
 
-        private Dictionary<Point, Point> FindShortestPath(Point startPoint, Point endPoint) 
+
+        private Dictionary<Section, Section> FindShortestPath(Section startSection, Section endSection)
         {
-            var previousPoints = new Dictionary<Point, Point>();
-            var visited = new HashSet<Point>();
-            var queue = new Queue<Point>();
+            var previousSections = new Dictionary<Section, Section>();
+            var visited = new HashSet<Section>();
+            var queue = new Queue<Section>();
 
-            queue.Enqueue(startPoint);
-            visited.Add(startPoint);
+            queue.Enqueue(startSection);
+            visited.Add(startSection);
 
-            while (queue.Any() && !previousPoints.ContainsKey(endPoint))
+            while (queue.Any() && !previousSections.ContainsKey(endSection))
             {
-                var currentPoint = queue.Dequeue();
+                var currentSection = queue.Dequeue();
 
-                if (currentPoint == endPoint)
-                    break;
-
-                var neighbors = _sections.Where(section => section.ContainsPoint(currentPoint))
-                                         .Select(section => section.FirstPoint.Equals(currentPoint) ? section.SecondPoint : section.FirstPoint).ToList();
+                var neighbors = currentSection.GetNeighbors(_sections);
 
                 foreach (var neighbor in neighbors)
                 {
@@ -62,11 +59,11 @@ namespace RailwayStation.PathFinder
                     {
                         queue.Enqueue(neighbor);
                         visited.Add(neighbor);
-                        previousPoints[neighbor] = currentPoint;
+                        previousSections[neighbor] = currentSection;
                     }
                 }
             }
-            return previousPoints;
+            return previousSections;
         }
     }
 }

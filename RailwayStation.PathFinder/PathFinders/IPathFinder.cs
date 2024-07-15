@@ -5,6 +5,6 @@ namespace RailwayStation.PathFinder
 {
     public interface IPathFinder
     {
-        List<Point> GetFindShortestPath(Point startPoint, Point endPoint);
+        List<Section> GetFindShortestPath(Section startSection, Section endSection);
     }
 }

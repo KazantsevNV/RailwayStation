@@ -1,17 +1,18 @@
 ﻿using RailwayStation.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RailwayStation.PathFinder
 {
     public class PathFinderPresenter
     {
-        private const string START_POINT_MESSAGE = "Введите ID начальной точки пути :";
-        private const string END_POINT_MESSAGE = "Введите ID конечной точки пути :";
+        private const string START_POINT_MESSAGE = "Введите ID начального участка пути :";
+        private const string END_POINT_MESSAGE = "Введите ID конечного участка пути :";
         private const string PATH_NOT_FOUND_MESSAGE = "Пути от {0} до {1} не существует";
         private const string SHORTEST_PATH_MESSAGE = "Кратчайший путь от {0} до {1}: ";
-        private const string FORMAT_EXCEPTION_MESSAGE = "ID точки должен быть целым числом";
-        private const string INVALID_OPERATION_EXCEPTION_MESSAGE = "Точки с ID = {0} не существует";
+        private const string FORMAT_EXCEPTION_MESSAGE = "ID участка должен быть целым числом";
+        private const string INVALID_OPERATION_EXCEPTION_MESSAGE = "Участка с ID = {0} не существует";
 
         private readonly IPathFinder _pathFinder;
         private readonly IStation _station;
@@ -34,19 +35,19 @@ namespace RailwayStation.PathFinder
         {
             while (true)
             {
-                var startPoint = GetPoint(START_POINT_MESSAGE);
-                var endPoint = GetPoint(END_POINT_MESSAGE);
+                var startSection = GetSection(START_POINT_MESSAGE);
+                var endSection = GetSection(END_POINT_MESSAGE);
 
-                var shortestPath = _pathFinder.GetFindShortestPath(startPoint, endPoint);
+                List<Section> shortestPath = _pathFinder.GetFindShortestPath(startSection, endSection);
 
                 if (shortestPath.IsNullOrEmpty())
                 {
-                    Console.WriteLine(string.Format(PATH_NOT_FOUND_MESSAGE, startPoint, endPoint));
+                    Console.WriteLine(string.Format(PATH_NOT_FOUND_MESSAGE, startSection, endSection));
                 }
                 else
                 {
 
-                    Console.WriteLine(string.Format(SHORTEST_PATH_MESSAGE, startPoint, endPoint));
+                    Console.WriteLine(string.Format(SHORTEST_PATH_MESSAGE, startSection, endSection));
                     foreach (var point in shortestPath)
                     {
                         Console.WriteLine(point);
@@ -56,25 +57,25 @@ namespace RailwayStation.PathFinder
             }
         }
 
-        private Point GetPoint(string message)
+        private Section GetSection(string message)
         {
-            int pointId = GetPointID(message);
+            int sectionId = GetSectionID(message);
 
-            Point point;
+            Section section;
             try
             {
-                point = _station.Points.First(p => p.Id == pointId);
+                section = _station.Sections.First(s => s.Id == sectionId);
             }
             catch (InvalidOperationException)
             {
-                Console.WriteLine(string.Format(INVALID_OPERATION_EXCEPTION_MESSAGE, pointId));
-                point = GetPoint(message);
+                Console.WriteLine(string.Format(INVALID_OPERATION_EXCEPTION_MESSAGE, sectionId));
+                section = GetSection(message);
             }
 
-            return point;
+            return section;
         }
 
-        private int GetPointID(string message)
+        private int GetSectionID(string message)
         {
             Console.Write(message);
             int pointId;
@@ -85,7 +86,7 @@ namespace RailwayStation.PathFinder
             catch (FormatException)
             {
                 Console.WriteLine(FORMAT_EXCEPTION_MESSAGE);
-                pointId = GetPointID(message);
+                pointId = GetSectionID(message);
             }
             return pointId;
         }
