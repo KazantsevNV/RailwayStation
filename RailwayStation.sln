@@ -17,6 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RailwayStation.ParksStats",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.PathFinder", "RailwayStation.PathFinder\RailwayStation.PathFinder.csproj", "{CC757124-C56E-4F09-9B5E-4776EACF30DE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{0ECD6496-3A4D-414A-B19C-DA8BA78E1B38}"
+	ProjectSection(SolutionItems) = preProject
+		DefaultStation.png = DefaultStation.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
