@@ -1,17 +1,15 @@
 ﻿using RailwayStation.DI;
 using RailwayStation.Model;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace RailwayStation.PathFinder
 {
-    public class DijkstraPathFinder : IPathFinder
+    public class ShortestPathFinder
     {
         private readonly List<Section> _sections;
 
-        public DijkstraPathFinder()
+        public ShortestPathFinder()
         {
             var station = DIContainer.Instance.Get<IStation>();
             _sections = station.Sections;
