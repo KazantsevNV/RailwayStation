@@ -1,4 +1,4 @@
-﻿using RailwayStation.Model;
+using RailwayStation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +15,18 @@ namespace RailwayStation.PathFinder
         private const string INVALID_OPERATION_EXCEPTION_MESSAGE = "Участка с ID = {0} не существует";
         private const string DIFFERENTIATE_MESSAGE = "Стартовый и финишный участки должны различаться";
 
-        private readonly IPathFinder _pathFinder;
-        private readonly IStation _station;
+        private readonly IPathFinder pathFinder;
+        private readonly IStation station;
 
         public PathFinderPresenter() 
         {
-            _pathFinder = PathFinderDIContainer.Instance.Get<IPathFinder>();
-            _station = PathFinderDIContainer.Instance.Get<IStation>();
+            pathFinder = PathFinderDIContainer.Instance.Get<IPathFinder>();
+            station = PathFinderDIContainer.Instance.Get<IStation>();
         }
 
         public void OutputAllSections() 
         {
-            _station.Sections.ForEach(section =>
-            {
-                Console.WriteLine($"{section.Id}   {section.Description}");
-            });
+            station.Sections.ForEach(section => Console.WriteLine($"{section.Id}   {section.Description}"));
         }
 
         public void StartInput() 
@@ -39,7 +36,7 @@ namespace RailwayStation.PathFinder
                 var startSection = GetSection(START_POINT_MESSAGE);
                 var endSection = GetSection(END_POINT_MESSAGE, startSection);
 
-                List<Section> shortestPath = _pathFinder.GetFindShortestPath(startSection, endSection);
+                List<Section> shortestPath = pathFinder.GetFindShortestPath(startSection, endSection);
 
                 if (shortestPath == null)
                 {
@@ -65,7 +62,7 @@ namespace RailwayStation.PathFinder
             Section section;
             try
             {
-                section = _station.Sections.First(s => s.Id == sectionId);
+                section = station.Sections.First(s => s.Id == sectionId);
             }
             catch (InvalidOperationException)
             {

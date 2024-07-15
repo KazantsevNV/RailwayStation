@@ -1,4 +1,4 @@
-﻿using RailwayStation.Model;
+using RailwayStation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +7,16 @@ namespace ParksStats
 {
     public class ParkInfoPrinter
     {
-        private readonly IStation _station;
+        private readonly IStation station;
 
         public ParkInfoPrinter() 
         {
-            _station = ModelDIContainer.Instance.Get<IStation>();
+            station = ModelDIContainer.Instance.Get<IStation>();
         }
 
         public void PrintParksInfo()
         {
-            _station.Parks.ForEach(park =>
+            station.Parks.ForEach(park =>
             {
                 Console.WriteLine(park);
 

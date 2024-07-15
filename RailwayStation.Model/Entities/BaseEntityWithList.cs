@@ -1,29 +1,29 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace RailwayStation.Model
 {
     public class BaseEntityWithList<T> : BaseEntity where T : BaseEntity
     {
-        private List<T> _entityes = new List<T>();
+        private readonly List<T> entityes = new();
 
-        public IReadOnlyList<T> Entityes => _entityes;
+        public IReadOnlyList<T> Entityes => entityes;
 
         public BaseEntityWithList(int id, string description, List<T> entityes) : base(id, description)
         {
-            _entityes = entityes;
+            this.entityes = entityes;
         }
 
-        public void AddSection(T entity)
-        {
-            _entityes.Add(entity);
+        public void AddSection(T entity) {
+            entityes.Add(entity);
         }
 
         public void RemoveSection(T entity)
         {
-            if (!_entityes.Contains(entity))
+            if (!entityes.Contains(entity)) {
                 return;
+            }
 
-            _entityes.Remove(entity);
+            entityes.Remove(entity);
         }
     }
 }

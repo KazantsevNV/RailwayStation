@@ -1,13 +1,7 @@
-﻿namespace RailwayStation.PathFinder
-{
-    internal class Program
-    {
-        private static PathFinderPresenter _presenter = new PathFinderPresenter();
-        static void Main(string[] args)
-        {
-            _presenter.OutputAllSections();
+using RailwayStation.PathFinder;
 
-            _presenter.StartInput();
-        }
-    }
-}
+var presenter = new PathFinderPresenter();
+
+presenter.OutputAllSections();
+
+presenter.StartInput();

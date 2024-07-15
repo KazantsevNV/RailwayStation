@@ -1,4 +1,4 @@
-﻿using RailwayStation.Model;
+using RailwayStation.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,12 +6,12 @@ namespace RailwayStation.PathFinder
 {
     public class ShortestPathFinder : IPathFinder
     {
-        private readonly IStation _station;
-        private readonly List<Section> _sections;
+        private readonly IStation station;
+        private readonly List<Section> sections;
         public ShortestPathFinder() 
         {
-            _station = PathFinderDIContainer.Instance.Get<IStation>();
-            _sections = _station.Sections;
+            station = PathFinderDIContainer.Instance.Get<IStation>();
+            sections = station.Sections;
         }
 
         public List<Section> GetFindShortestPath(Section startSection, Section endSection)
@@ -21,9 +21,10 @@ namespace RailwayStation.PathFinder
             var path = new List<Section>();
             var section = endSection;
 
-            if (!previousPoints.ContainsKey(endSection))
+            if (!previousPoints.ContainsKey(endSection)) 
+            {
                 return null;
-
+            }
 
             while (section != null && previousPoints.ContainsKey(section))
             {
@@ -50,7 +51,7 @@ namespace RailwayStation.PathFinder
             {
                 var currentSection = queue.Dequeue();
 
-                var neighbors = currentSection.GetNeighbors(_sections);
+                var neighbors = currentSection.GetNeighbors(sections);
 
                 foreach (var neighbor in neighbors)
                 {
