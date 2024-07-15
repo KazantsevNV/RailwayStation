@@ -1,13 +1,13 @@
 ﻿using Ninject;
 using RailwayStation.Core;
 
-namespace RailwayStation.Model
+namespace RailwayStation.PathFinder
 {
-    public class ModelDIContainer : AbstractDIContainer
+    public class PathFinderDIContainer : AbstractDIContainer
     {
-        private ModelDIContainer()
+        private PathFinderDIContainer()
         {
-            kernel = new StandardKernel(new ModelModule());
+            kernel = new StandardKernel(new PathFinderModule());
         }
 
         public static AbstractDIContainer Instance
@@ -16,7 +16,7 @@ namespace RailwayStation.Model
             {
                 lock (lockObj)
                 {
-                    instance ??= new ModelDIContainer();
+                    instance ??= new PathFinderDIContainer();
                     return instance;
                 }
             }

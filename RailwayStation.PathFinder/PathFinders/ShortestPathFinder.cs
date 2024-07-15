@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace RailwayStation.PathFinder
 {
-    public class ShortestPathFinder
+    public class ShortestPathFinder : IPathFinder
     {
         private readonly List<Section> _sections;
 
         public ShortestPathFinder()
         {
-            var station = ModelDIContainer.Instance.Get<IStation>();
+            var station = PathFinderDIContainer.Instance.Get<IStation>();
             _sections = station.Sections;
         }
 
