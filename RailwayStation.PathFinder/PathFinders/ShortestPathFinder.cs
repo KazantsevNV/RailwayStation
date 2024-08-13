@@ -10,7 +10,7 @@ namespace RailwayStation.PathFinder
         private readonly List<Section> sections;
         public ShortestPathFinder() {
             station = PathFinderDIContainer.Instance.Get<IStation>();
-            sections = station.Sections;
+            sections = station.Sections.ToList();
         }
 
         public List<Section> GetFindShortestPath(Section startSection, Section endSection) {

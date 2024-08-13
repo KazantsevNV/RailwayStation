@@ -6,17 +6,17 @@ namespace RailwayStation.Model
     {
         private readonly List<T> entityes = new();
 
-        public IReadOnlyList<T> Entityes => entityes;
+        protected IReadOnlyList<T> Entityes => entityes;
 
         public BaseEntityWithList(int id, string description, List<T> entityes) : base(id, description) {
-            this.entityes = entityes;
+            this.entityes = new List<T>(entityes);
         }
 
-        public void AddSection(T entity) {
+        protected void AddEntity(T entity) {
             entityes.Add(entity);
         }
 
-        public void RemoveSection(T entity) {
+        protected void RemoveEntity(T entity) {
             if (!entityes.Contains(entity)) {
                 return;
             }

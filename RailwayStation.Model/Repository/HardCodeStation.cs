@@ -2,14 +2,14 @@ using System.Collections.Generic;
 
 namespace RailwayStation.Model
 {
-    public class Station : IStation
+    public class HardCodeStation : IStation
     {
-        public List<Point> Points { get; private set; }
-        public List<Section> Sections { get; private set; }
-        public List<Way> Ways { get; private set; }
-        public List<Park> Parks { get; private set; }
+        public IReadOnlyList<Point> Points { get; private set; }
+        public IReadOnlyList<Section> Sections { get; private set; }
+        public IReadOnlyList<Way> Ways { get; private set; }
+        public IReadOnlyList<Park> Parks { get; private set; }
 
-        public Station() {
+        public HardCodeStation() {
             #region points
             var point1 = new Point(1, "Point 1");
             var point2 = new Point(2, "Point 2");

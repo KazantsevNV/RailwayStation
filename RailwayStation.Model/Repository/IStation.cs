@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace RailwayStation.Model
 {
     public interface IStation
     {
-        public List<Point> Points { get; }
-        public List<Section> Sections { get; }
-        public List<Way> Ways { get; }
-        public List<Park> Parks { get; }
+        public IReadOnlyList<Point> Points { get; }
+        public IReadOnlyList<Section> Sections { get; }
+        public IReadOnlyList<Way> Ways { get; }
+        public IReadOnlyList<Park> Parks { get; }
     }
 }

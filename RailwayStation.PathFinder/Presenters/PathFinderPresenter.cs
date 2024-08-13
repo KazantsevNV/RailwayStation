@@ -24,7 +24,9 @@ namespace RailwayStation.PathFinder
         }
 
         public void OutputAllSections() {
-            station.Sections.ForEach(section => Console.WriteLine($"{section.Id}   {section.Description}"));
+            foreach (var section in station.Sections) {
+                Console.WriteLine($"{section.Id}   {section.Description}");
+            }
         }
 
         public void StartInput() {
