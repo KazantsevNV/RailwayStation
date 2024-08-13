@@ -1,3 +1,5 @@
+using System;
+
 namespace RailwayStation.Model
 {
     public class BaseEntity
@@ -11,24 +13,8 @@ namespace RailwayStation.Model
         }
 
         public override string ToString() => Description;
-
-        public override bool Equals(object obj) {
-            if (obj == null) {
-                return false;
-            }
-
-            var entity = obj as BaseEntity;
-            if (entity as BaseEntity == null) {
-                return false;
-            }
-
-            return Equals(entity);
-        }
-
-        public bool Equals(BaseEntity entity) {
-            return entity.Id == Id;
-        }
-
-        public override int GetHashCode() => Id;
+        public override int GetHashCode() => HashCode.Combine(Id);
+        public override bool Equals(object obj) => Equals(obj as BaseEntity);
+        public bool Equals(BaseEntity other) => other != null && Id == other.Id;
     }
 }
