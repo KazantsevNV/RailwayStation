@@ -14,12 +14,12 @@ namespace RailwayStation.PathFinder
         }
 
         public List<Section> GetFindShortestPath(Section startSection, Section endSection) {
-            var previousPoints = FindShortestPath(startSection, endSection);
+            var previousPoints = FindShortestPath(endSection, startSection);
 
             var path = new List<Section>();
-            var section = endSection;
+            var section = startSection;
 
-            if (!previousPoints.ContainsKey(endSection)) {
+            if (!previousPoints.ContainsKey(startSection)) {
                 return null;
             }
 
@@ -27,8 +27,7 @@ namespace RailwayStation.PathFinder
                 path.Add(section);
                 section = previousPoints[section];
             }
-            path.Reverse();
-            path.Remove(endSection);
+            path.Remove(startSection);
 
             return path;
         }
