@@ -1,10 +1,9 @@
-﻿using RailwayStation.Model;
-using System.Collections.Generic;
+using RailwayStation.Model;
 
 namespace RailwayStation.PathFinder
 {
     public interface IPathFinder
     {
-        List<Section> GetFindShortestPath(Section startSection, Section endSection);
+        public string GetShortestPath(Section startSection, Section endSection);
     }
 }

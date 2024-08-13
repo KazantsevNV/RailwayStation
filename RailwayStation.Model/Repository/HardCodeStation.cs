@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RailwayStation.Model
 {
@@ -86,6 +87,13 @@ namespace RailwayStation.Model
                 park1, park2, park3, park4,
             };
             #endregion
+        }
+
+        public Section GetSectionById(int sectionId) {
+            var section = Sections.FirstOrDefault(s => s.Id == sectionId) 
+                ?? throw new EntityNotFoundException(string.Format(IStation.NOT_FOUND_EXCEPTION_MESSAGE, sectionId));
+
+            return section;
         }
     }
 }

@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RailwayStation.ParksStats", "ParksStats\RailwayStation.ParksStats.csproj", "{0713D95A-2298-4958-B138-142679B29F8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.PathFinder", "RailwayStation.PathFinder\RailwayStation.PathFinder.csproj", "{CC757124-C56E-4F09-9B5E-4776EACF30DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RailwayStation.PathFinder", "RailwayStation.PathFinder\RailwayStation.PathFinder.csproj", "{CC757124-C56E-4F09-9B5E-4776EACF30DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{0ECD6496-3A4D-414A-B19C-DA8BA78E1B38}"
 	ProjectSection(SolutionItems) = preProject
@@ -22,14 +22,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{665F1B29-7A2E-4181-AA06-5FA090B0F630}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.Model.Tests", "RailwayStation.Model.Tests\RailwayStation.Model.Tests.csproj", "{F0C37362-8DC1-4FAF-8A6D-CA6909A721CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RailwayStation.Model.Tests", "RailwayStation.Model.Tests\RailwayStation.Model.Tests.csproj", "{F0C37362-8DC1-4FAF-8A6D-CA6909A721CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayStation.PathFinder.Tests", "RailwayStation.PathFinder.Tests\RailwayStation.PathFinder.Tests.csproj", "{95249852-9A95-4643-AEFD-202B844FC1CC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66C4F194-07D0-4985-8C3D-0950FF650D7C}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RailwayStation.PathFinder.Tests", "RailwayStation.PathFinder.Tests\RailwayStation.PathFinder.Tests.csproj", "{95249852-9A95-4643-AEFD-202B844FC1CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

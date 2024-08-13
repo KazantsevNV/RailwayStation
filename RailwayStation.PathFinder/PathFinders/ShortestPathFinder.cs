@@ -1,4 +1,5 @@
 using RailwayStation.Model;
+using RailwayStation.PathFinder.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,8 @@ namespace RailwayStation.PathFinder
 {
     public class ShortestPathFinder : IPathFinder
     {
+        private const string PATH_NOT_FOUND_MESSAGE = "Пути от {0} до {1} не существует";
+
         private readonly IStation station;
         private readonly List<Section> sections;
         public ShortestPathFinder() {
@@ -13,23 +16,27 @@ namespace RailwayStation.PathFinder
             sections = station.Sections.ToList();
         }
 
-        public List<Section> GetFindShortestPath(Section startSection, Section endSection) {
-            var previousPoints = FindShortestPath(endSection, startSection);
+        public string GetShortestPath(Section startSection, Section endSection) {
+            if (startSection.Equals(endSection)) {
+                throw new EqualSectionsException();
+            }
 
+            var previousPoints = FindShortestPath(endSection, startSection);
+            
             var path = new List<Section>();
             var section = startSection;
 
             if (!previousPoints.ContainsKey(startSection)) {
-                return null;
+                throw new PathNotFoundException(string.Format(PATH_NOT_FOUND_MESSAGE, startSection, endSection));
             }
+
 
             while (section != null && previousPoints.ContainsKey(section)) {
                 path.Add(section);
                 section = previousPoints[section];
             }
-            path.Remove(startSection);
-
-            return path;
+            path.Add(endSection);
+            return string.Join(" -> ", path);
         }
 
 
